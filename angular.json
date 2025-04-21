@@ -62,6 +62,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          
           "configurations": {
             "production": {
               "buildTarget": "ng-employee-crud:build:production"
@@ -98,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c1a1c3d0-ce7b-4316-9075-ada0f2a39c1c"
   }
 }

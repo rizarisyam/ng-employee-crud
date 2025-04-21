@@ -1,0 +1,35 @@
+<p-card  >
+
+
+
+<p-table [value]="employees()">
+    <ng-template #header>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Birthdate</th>
+            <th>Status</th>
+            <th>Group</th>
+            <th>Description</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-product>
+        <tr>
+            <td>{{ product.first_name }}</td>
+            <td>{{ product.last_name }}</td>
+            <td>{{ product.username }}</td>
+            <td>{{ product.email }}</td>
+            <td>{{ product.birthdate }}</td>
+            <td>
+                <p-toggleswitch [ngModel]="product.status" />
+            </td>
+            <td>{{ product.group }}</td>
+            <td>
+                <textarea readonly rows="5" autoResize cols="50" pTextarea [ngModel]="product.description"></textarea>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+</p-card>

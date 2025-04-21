@@ -1,0 +1,45 @@
+
+
+<div class="grid grid-cols-4 h-screen w-full">
+    <img class="h-full object-cover col-span-3" src="assets/images/mirella-callage-PpPQm528k1E-unsplash.jpg" />
+    <p-card styleClass="h-screen">
+        <div class="flex flex-col gap-4" [formGroup]="form" >
+            <h4 class="text-xl font-semibold">Nice to see you again</h4>
+
+            <div class="flex flex-col gap-2">
+                <label for="" class="text-sm text-gray-500">Username</label>
+                <input formControlName="username" type="text" pInputText  />
+                <ng-container *ngIf="form.controls.username.errors">
+                    <span class="text-sm text-red-500">Username is required.</span>
+                </ng-container>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="" class="text-sm text-gray-500">Password</label>
+                <div class="card flex flex-wrap w-full gap-4">
+                    
+                    <p-iconfield styleClass="w-full">
+                        <input formControlName="password" [type]="passwordVisibility() ? 'text' : 'password'" pInputText class="w-full" />
+                        <p-inputicon (click)="onTogglePasswordVisibility()" styleClass="pi" [ngClass]="{'pi-eye': passwordVisibility(), 'pi-eye-slash': !passwordVisibility()}" />
+                    </p-iconfield>
+                </div>
+                <ng-container *ngIf="form.controls.password.errors">
+                    <span class="text-sm text-red-500">Username is required.</span>
+                </ng-container>
+
+                <div class="flex justify-between">
+                   <div class="flex gap-2 items-center-safe">
+                    <p-toggleswitch formControlName="rememberMe"  />
+                    <span class="text-sm text-gray-500">Remember me</span>
+                   </div>
+
+                   <a class="text-blue-500" href="javascript:void()">Forgot password?</a>
+                </div>
+            </div>
+
+            <p-button styleClass="w-full" label="Submit" type="submit" (onClick)="onSubmit()" />
+
+            
+        </div>
+    </p-card>
+</div>
