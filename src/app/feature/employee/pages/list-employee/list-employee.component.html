@@ -1,35 +1,61 @@
-<p-card  >
-
-
-
-<p-table [value]="employees()">
+<p-card>
+  <p-table
+    #dt2
+    [value]="employees().data"
+    [paginator]="true"
+    [rows]="pageData().per_page"
+    [lazy]="true"
+    [totalRecords]="employees().items"
+    (onPage)="loadEmployeesLazy($event)"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [scrollable]="true"
+    [scrollHeight]="'calc(100vh - 230px)'"
+    
+  >
+    <ng-template #caption>
+      <div class="flex">
+        <p-iconfield iconPosition="left" class="ml-auto">
+          <p-inputicon>
+            <i class="pi pi-search"></i>
+          </p-inputicon>
+          <input pInputText type="text" placeholder="Search keyword" />
+        </p-iconfield>
+      </div>
+    </ng-template>
     <ng-template #header>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Birthdate</th>
-            <th>Status</th>
-            <th>Group</th>
-            <th>Description</th>
-        </tr>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Birthdate</th>
+        <th>Status</th>
+        <th>Group</th>
+        <th>Description</th>
+      </tr>
     </ng-template>
     <ng-template #body let-product>
-        <tr>
-            <td>{{ product.first_name }}</td>
-            <td>{{ product.last_name }}</td>
-            <td>{{ product.username }}</td>
-            <td>{{ product.email }}</td>
-            <td>{{ product.birthdate }}</td>
-            <td>
-                <p-toggleswitch [ngModel]="product.status" />
-            </td>
-            <td>{{ product.group }}</td>
-            <td>
-                <textarea readonly rows="5" autoResize cols="50" pTextarea [ngModel]="product.description"></textarea>
-            </td>
-        </tr>
+      <tr>
+        <td>{{ product.first_name }}</td>
+        <td>{{ product.last_name }}</td>
+        <td>{{ product.username }}</td>
+        <td>{{ product.email }}</td>
+        <td>{{ product.birthdate }}</td>
+        <td>
+          <p-toggleswitch [ngModel]="product.status" />
+        </td>
+        <td>{{ product.group }}</td>
+        <td>
+          <textarea
+            readonly
+            rows="5"
+            autoResize
+            cols="50"
+            pTextarea
+            [ngModel]="product.description"
+          ></textarea>
+        </td>
+      </tr>
     </ng-template>
-</p-table>
+  </p-table>
 </p-card>
