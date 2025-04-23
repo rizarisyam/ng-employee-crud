@@ -1,1 +1,81 @@
-<p>create-employee works!</p>
+
+<p-card>
+    <form class="flex flex-col justify-between md:justify-center " [formGroup]="employeeForm">
+        <div class="space-y-12">
+          
+      
+          <div class="border-b border-gray-900/10 pb-12 flex flex-col items-center">
+            <h2 class="text-base/7 font-semibold text-gray-900">Create Employee</h2>
+            <p class="mt-1 text-sm/6 text-gray-600">Fill in the details below to add a new employee to the system.</p>
+            
+      
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 w-full md:w-1/2">
+              <div class="col-span-full">
+                <label for="first-name" class="block text-sm/6 font-medium text-gray-900">First name</label>
+                <div class="mt-2">
+                    <input formControlName="first_name" type="text" pInputText  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"  />
+                </div>
+              </div>
+      
+              <div class="col-span-full">
+                <label for="last-name" class="block text-sm/6 font-medium text-gray-900">Last name</label>
+                <div class="mt-2">
+                    <input type="text" formControlName="last_name" pInputText  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"  />
+                </div>
+              </div>
+      
+              <div class="col-span-full">
+                <label for="email" class="block text-sm/6 font-medium text-gray-900">Username</label>
+                <div class="mt-2">
+                    <input type="text" formControlName="username" pInputText  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"  />
+                </div>
+              </div>
+      
+              <div class="col-span-full">
+                <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
+                <div class="mt-2">
+                    <input type="text"  formControlName="email" pInputText  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"  />
+                </div>
+              </div>
+              <div class="col-span-full">
+                <label for="email" class="block text-sm/6 font-medium text-gray-900">Birthdate</label>
+                <div class="mt-2">
+                    <p-datepicker [maxDate]="maxDate" formControlName="birthdate" styleClass="block w-full rounded-md bg-white py-1.5 text-base text-gray-900 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                </div>
+              </div>
+              <div class="col-span-full">
+                <label for="email" class="block text-sm/6 font-medium text-gray-900">Basic Salary</label>
+                <div class="mt-2">
+                    <input type="text" formControlName="basic_salary" pInputText  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"  />
+                </div>
+              </div>
+              <div class="col-span-full">
+                <label for="email" class="block text-sm/6 font-medium text-gray-900">Status</label>
+                <p-toggleswitch formControlName="status" />
+              </div>
+      
+              <div class="col-span-full">
+                <label for="country" class="block text-sm/6 font-medium text-gray-900">Country</label>
+                <p-select [options]="departments" [style]="{width: '100%'}" styleClass="w-full" formControlName="group" filter placeholder="Select an department" class="w-full md:w-56" />
+              </div>
+
+              <div class="col-span-full">
+                <label for="country" class="block text-sm/6 font-medium text-gray-900">Country</label>
+                <textarea rows="5" cols="30" pTextarea formControlName="description" class="w-full"></textarea>
+              </div>
+      
+              
+            </div>
+          </div>
+      
+          </div>
+      
+        <div class="mt-6 flex items-center justify-end gap-x-6">
+            <p-button [routerLink]="['/employee']" label="Cancel" variant="text" />
+          <p-button type="submit" (onClick)="onSubmit()" label="Submit" />
+        </div>
+      </form>
+      
+</p-card>
+
+<p-toast [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }" />

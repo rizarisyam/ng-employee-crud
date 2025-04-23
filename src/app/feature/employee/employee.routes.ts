@@ -9,16 +9,19 @@ export const employeeRoutes: Routes = [
     {path: '', component: BaseLayoutComponent, children: [
         {
             path: '',
-            component: ListEmployeeComponent,
+            loadComponent: () => import('./pages/list-employee/list-employee.component').then(m => m.ListEmployeeComponent),
         },
         {
             path: 'create',
-            component: CreateEmployeeComponent,
+           loadComponent: () => import('./pages/create-employee/create-employee.component').then(m => m.CreateEmployeeComponent),
         },
         {
             path: 'edit/:id',
             component: EditEmployeeComponent,
+        },
+        {
+            path: 'info/:id',
+            loadComponent: () => import('./pages/info-employee/info-employee.component').then(m => m.InfoEmployeeComponent),
         }
     ]},
-    
 ]

@@ -16,6 +16,7 @@ export interface Employee {
   email: string;
   status: boolean;
   birthdate: string;
+  basic_salary: string;
   group: string;
   description: string;
 }
