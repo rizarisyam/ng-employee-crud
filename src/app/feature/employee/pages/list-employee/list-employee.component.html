@@ -80,7 +80,7 @@
                 {{ product[col.field] | date: 'dd/MM/yyyy' }}
               }
               @case ('basic_salary') {
-                {{ product[col.field] }}
+                {{ product[col.field] | currency: 'Rp.' }}
               }
               @case ('description') {
                 <textarea

@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { HttpService } from '../../../../core/services/common-http.service';
 
-import { tap } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { EmployeeType } from '../../employee.type';
 import { CommonModule } from '@angular/common';
 import {
@@ -256,7 +256,9 @@ export class ListEmployeeComponent {
 
     this.httpService
       .get<EmployeeType>('http://localhost:3000/employees', { ...params })
-      .pipe(tap((res) => this.employees.set(res)))
+      .pipe(
+        map(res => ({...res, data: res.data.map((item) => ({ ...item, basic_salary: String(item.basic_salary).replace(/\$/g, '') })) })),
+        tap((res) => this.employees.set(res)))
       .subscribe();
   }
 
